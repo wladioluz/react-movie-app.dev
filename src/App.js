@@ -22,7 +22,9 @@ const App = () => {
 
   return (
     <div className='app'>
-      <h1>MovieLand</h1>
+      <h1>
+        <a href='/'>MovieLand</a>
+      </h1>
 
       <div className='search'>
         <input
@@ -30,6 +32,11 @@ const App = () => {
           placeholder='Search for movies'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              searchMovies(searchTerm);
+            }
+          }}
         />
         <img
           src={SearchIcon}
@@ -46,7 +53,7 @@ const App = () => {
         </div>
       ) : (
         <div className='empty'>
-          <h2>No movies found</h2>
+          <h2>no movies found &#58;&#40;</h2>
         </div>
       )}
     </div>
